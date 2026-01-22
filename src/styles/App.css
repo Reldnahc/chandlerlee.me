@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root[data-theme="light"] {
+  --bg: #f9fafb;        /* soft off-white */
+  --surface: #ffffff;  /* cards / header */
+  --border: #e5e7eb;   /* light neutral border */
+
+  --text: #111827;     /* near-black, not pure */
+  --muted: #4b5563;    /* secondary text */
+  --subtle: #6b7280;   /* tertiary / labels */
+}
+
+:root[data-theme="dark"] {
+  --bg: #121212;        /* true dark gray */
+  --surface: #181818;  /* elevated surface */
+  --border: #2a2a2a;   /* soft separation */
+
+  --text: #eaeaea;     /* soft white */
+  --muted: #b5b5b5;    /* readable muted */
+  --subtle: #8f8f8f;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #121212;        /* true dark gray */
+    --surface: #181818;  /* elevated surface */
+    --border: #2a2a2a;   /* soft separation */
+
+    --text: #eaeaea;     /* soft white */
+    --muted: #b5b5b5;    /* readable muted */
+    --subtle: #8f8f8f;
+  }
+}
+
+@theme {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+}
+
+.bg-app {
+  background-color: var(--bg);
+}
+
+.bg-surface {
+  background-color: var(--surface);
+}
+
+.text-app {
+  color: var(--text);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.border-app {
+  border-color: var(--border);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+* {
+  transition:
+          background-color 120ms ease,
+          color 120ms ease,
+          border-color 120ms ease;
+}

@@ -1,0 +1,19 @@
+import type { ReactNode } from "react";
+
+type Props = {
+    children: ReactNode;
+    className?: string;
+};
+
+export default function Container({ children, className }: Props) {
+    return (
+        <div
+            className={[
+                "mx-auto w-full max-w-[1100px] px-6",
+                className ?? "",
+            ].join(" ")}
+        >
+            {children}
+        </div>
+    );
+}
