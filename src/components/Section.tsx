@@ -15,11 +15,11 @@ export default function Section({ id, title, eyebrow, children }: Props) {
                 {(eyebrow || title) && (
                     <header className="mb-8">
                         {eyebrow && (
-                            <div className="text-sm uppercase tracking-wide opacity-70">
+                            <div className="text-md uppercase tracking-wide opacity-70 text-accent">
                                 {eyebrow}
                             </div>
                         )}
-                        {title && <h2 className="mt-2 text-2xl font-semibold">{title}</h2>}
+                        {title && <h2 className="mt-2 text-3xl font-semibold">{title}</h2>}
                     </header>
                 )}
                 {children}

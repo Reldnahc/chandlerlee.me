@@ -16,16 +16,16 @@ export default function Hero() {
 
                     <div className="mt-8 flex flex-wrap gap-3">
                         <a
-                            href="#projects"
-                            className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white"
+                            href="#contact"
+                            className="bg-accent hover:bg-accent/50 rounded-md px-4 py-2 text-sm font-medium text-white"
                         >
-                            View Projects
+                            Contact
                         </a>
                         <a
                             href="/Chandler_Lee_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-md border px-4 py-2 text-sm font-medium"
+                            className="hover:bg-text/20 rounded-md border px-4 py-2 text-sm font-medium"
                         >
                             Download Resume
                         </a>

@@ -26,7 +26,7 @@ export default function Header() {
                             <a
                                 key={item.href}
                                 href={item.href}
-                                className="text-muted hover:text-text transition"
+                                className="hover:text-accent hover:underline text-muted transition"
                             >
                                 {item.label}
                             </a>
@@ -36,7 +36,7 @@ export default function Header() {
                             href="/Chandler_Lee_Resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="rounded-md border border-border bg-surface px-3 py-1.5 font-medium text-text hover:bg-surface/70 transition"
+                            className="hover:bg-text/20 rounded-md border border-border  px-3 py-1.5 font-medium text-text transition"
                         >
                             Resume
                         </a>

@@ -33,7 +33,7 @@ export default function ProjectCard({ project }: Props) {
                                 key={l.href} href={l.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="underline underline-offset-4 opacity-90 hover:opacity-100"
+                                className="underline underline-offset-4 opacity-90 hover:opacity-100 hover:text-accent"
                             >
                                 {l.label}
                             </a>

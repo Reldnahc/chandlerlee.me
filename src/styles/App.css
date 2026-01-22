@@ -8,6 +8,7 @@
   --text: #111827;     /* near-black, not pure */
   --muted: #4b5563;    /* secondary text */
   --subtle: #6b7280;   /* tertiary / labels */
+  --accent: #06768d;
 }
 
 :root[data-theme="dark"] {
@@ -18,6 +19,7 @@
   --text: #eaeaea;     /* soft white */
   --muted: #b5b5b5;    /* readable muted */
   --subtle: #8f8f8f;
+  --accent: #06768d;
 }
 
 
@@ -30,6 +32,7 @@
     --text: #eaeaea;     /* soft white */
     --muted: #b5b5b5;    /* readable muted */
     --subtle: #8f8f8f;
+    --accent: #06768d;
   }
 }
 
@@ -40,26 +43,7 @@
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-subtle: var(--subtle);
-}
-
-.bg-app {
-  background-color: var(--bg);
-}
-
-.bg-surface {
-  background-color: var(--surface);
-}
-
-.text-app {
-  color: var(--text);
-}
-
-.text-muted {
-  color: var(--muted);
-}
-
-.border-app {
-  border-color: var(--border);
+  --color-accent: var(--accent);
 }
 
 html,
