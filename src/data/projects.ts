@@ -51,7 +51,7 @@ export const projects: Project[] = [
             "Significant backend and engine changes.",
         ],
         links: [
-            { label: "Download", href: "/3M_mid_off.zip" },
+            { label: "Download", href: "https://drive.google.com/file/d/18wyG0x0Z22DcZTxe4tSvaIfs2YPSswzT/view?usp=sharing" },
         ],
         image: "/img/midoff.png",
     },

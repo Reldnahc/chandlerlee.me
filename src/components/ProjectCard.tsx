@@ -29,7 +29,12 @@ export default function ProjectCard({ project }: Props) {
 
                     <div className="mt-6 flex gap-4 text-sm font-medium">
                         {project.links.map((l) => (
-                            <a key={l.href} href={l.href} className="underline underline-offset-4 opacity-90 hover:opacity-100">
+                            <a
+                                key={l.href} href={l.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline underline-offset-4 opacity-90 hover:opacity-100"
+                            >
                                 {l.label}
                             </a>
                         ))}
