@@ -22,18 +22,26 @@ export default function Hero() {
                             View Projects
                         </a>
                         <a
-                            href="/resume.pdf"
+                            href="/Chandler_Lee_Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="rounded-md border px-4 py-2 text-sm font-medium"
                         >
                             Download Resume
                         </a>
                     </div>
 
-                    <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm opacity-75">
+                    <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
                         <span>Frontend + Full-stack</span>
                         <span>Realtime / WebSockets</span>
                         <span>API integrations</span>
                         <span>Performance-minded</span>
+                        <span>Product-focused</span>
+                        <span>End-to-end features</span>
+                        <span>UI + state management</span>
+                        <span>Accessibility-aware</span>
+                        <span>Responsive design</span>
+
                     </div>
                 </div>
             </Container>

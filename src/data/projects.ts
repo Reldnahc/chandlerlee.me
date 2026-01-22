@@ -4,15 +4,15 @@ export type Project = {
     tech: string[];
     highlights: string[];
     links: { label: string; href: string }[];
-    image?: string; // e.g. "/img/jeopardy.png"
+    image?: string;
 };
 
 export const projects: Project[] = [
     {
-        title: "AI Jeopardy (Multiplayer)",
+        title: "AI Jeopardy",
         description:
             "Online multiplayer Jeopardy-style game with a host role and realtime game state.",
-        tech: ["React", "TypeScript", "WebSockets", "Node.js"],
+        tech: ["React", "TypeScript", "WebSockets", "Node.js", "Multiplayer"],
         highlights: [
             "Access to cutting edge LLMs from various providers.",
             "Designed host vs contestant permissions and UI flows.",
@@ -31,12 +31,28 @@ export const projects: Project[] = [
             "Online Idle incremental game with very large numbers.",
         tech: ["React", "TypeScript", "Node.js"],
         highlights: [
-            "Designed host vs contestant permissions and UI flows.",
+            "Client side local storage based gameplay.",
+            "Numbers scale to over 60 digits.",
+            "Mobile focused gameplay.",
         ],
         links: [
             { label: "Live", href: "https://zenzaibatsu.com/" },
-            { label: "GitHub", href: "#" },
         ],
-        image: "/img/placeholder.png",
+        image: "/img/zenzaibatsu.png",
+    },
+    {
+        title: "3M Midoff",
+        description:
+            "Platform fighting game created with platform fighter engine.",
+        tech: ["Gamemaker", "Online",  "Multiplayer"],
+        highlights: [
+            "over 15 playable characters.",
+            "Rollback Netcode.",
+            "Significant backend and engine changes.",
+        ],
+        links: [
+            { label: "Download", href: "/3M_mid_off.zip" },
+        ],
+        image: "/img/midoff.png",
     },
 ];
