@@ -36,6 +36,20 @@
   }
 }
 
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-in-up {
+      animation: var(--animate-fade-in-up);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  }
+}
+
+
 @theme {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
@@ -44,6 +58,8 @@
   --color-muted: var(--muted);
   --color-subtle: var(--subtle);
   --color-accent: var(--accent);
+
+  --animate-fade-in-up: fadeInUp 600ms ease-out both;
 }
 
 html,

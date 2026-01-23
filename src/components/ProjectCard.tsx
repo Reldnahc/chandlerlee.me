@@ -1,11 +1,12 @@
 import type { Project } from "../data/projects";
+import ImageCarousel from "./ImageCarousel.tsx";
 
 type Props = { project: Project };
 
 export default function ProjectCard({ project }: Props) {
     return (
-        <article className="rounded-lg border p-6">
-            <div className="flex flex-col gap-6 md:flex-row md:items-start">
+        <article className="rounded-lg border p-6 border-accent">
+            <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
                 <div className="md:flex-1">
                     <h3 className="text-xl font-semibold">{project.title}</h3>
                     <p className="mt-2 opacity-80">{project.description}</p>
@@ -16,8 +17,8 @@ export default function ProjectCard({ project }: Props) {
                                 key={t}
                                 className="rounded-full border px-3 py-1 text-xs opacity-80"
                             >
-                {t}
-              </span>
+                                {t}
+                            </span>
                         ))}
                     </div>
 
@@ -41,16 +42,9 @@ export default function ProjectCard({ project }: Props) {
                     </div>
                 </div>
 
-                {project.image && (
-                    <div className="md:w-[360px]">
-                        <div className="aspect-[16/10] overflow-hidden rounded-md border bg-gray-50">
-                            <img
-                                src={project.image}
-                                alt={`${project.title} screenshot`}
-                                className="h-full w-full object-cover"
-                                loading="lazy"
-                            />
-                        </div>
+                {project.images && project.images.length > 0 && (
+                    <div className="md:w-[360px] md:flex md:items-center">
+                        <ImageCarousel images={project.images} altBase={project.title} />
                     </div>
                 )}
             </div>

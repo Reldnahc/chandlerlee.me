@@ -2,7 +2,7 @@ import Container from "../components/Container";
 
 export default function Hero() {
     return (
-        <section id="top" className="py-16 sm:py-24">
+        <section id="top" className="animate-fade-in-up py-16 sm:py-24">
             <Container>
                 <div className="max-w-[750px]">
                     <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">

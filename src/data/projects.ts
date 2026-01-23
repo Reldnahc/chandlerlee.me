@@ -4,7 +4,7 @@ export type Project = {
     tech: string[];
     highlights: string[];
     links: { label: string; href: string }[];
-    image?: string;
+    images?: string[];
 };
 
 export const projects: Project[] = [
@@ -23,7 +23,7 @@ export const projects: Project[] = [
             { label: "Live", href: "https://ai-jeopardy.com/" },
             { label: "GitHub", href: "https://github.com/Reldnahc/AI-Jeopardy" },
         ],
-        image: "/img/placeholder.png",
+        images: ["/img/zenzaibatsu/1.png"],
     },
     {
         title: "Zen Zaibatsu",
@@ -38,7 +38,7 @@ export const projects: Project[] = [
         links: [
             { label: "Live", href: "https://zenzaibatsu.com/" },
         ],
-        image: "/img/zenzaibatsu.png",
+        images: ["/img/zenzaibatsu/1.png", "/img/zenzaibatsu/2.png"],
     },
     {
         title: "3M Midoff",
@@ -53,6 +53,6 @@ export const projects: Project[] = [
         links: [
             { label: "Download", href: "https://drive.google.com/file/d/18wyG0x0Z22DcZTxe4tSvaIfs2YPSswzT/view?usp=sharing" },
         ],
-        image: "/img/midoff.png",
+        images: ["/img/midoff/1.png"],
     },
 ];
