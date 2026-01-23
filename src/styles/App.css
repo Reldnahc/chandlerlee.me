@@ -22,7 +22,6 @@
   --accent: #06768d;
 }
 
-
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --bg: #121212;        /* true dark gray */
@@ -47,8 +46,14 @@
       to   { opacity: 1; transform: translateY(0); }
     }
   }
-}
 
+  * {
+    transition:
+            background-color 120ms ease,
+            color 120ms ease,
+            border-color 120ms ease;
+  }
+}
 
 @theme {
   --color-bg: var(--bg);
@@ -71,11 +76,4 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   scroll-behavior: smooth;
-}
-
-* {
-  transition:
-          background-color 120ms ease,
-          color 120ms ease,
-          border-color 120ms ease;
 }

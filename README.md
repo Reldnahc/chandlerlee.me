@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# chandlerlee.me
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, minimal portfolio website built with React, TypeScript, and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Clean, minimal design** with a focus on readability and accessibility
+- **Dark/light mode** with system preference detection
+- **Responsive layout** optimized for mobile and desktop
+- **Image carousel** for project screenshots with modal view
+- **Smooth animations** with respect for reduced motion preferences
+- **Fast performance** using Vite for bundling and development
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **React 19** with TypeScript
+- **Tailwind CSS v4** for styling
+- **Vite** for build tooling and dev server
+- **GitHub Pages** for deployment
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── components/       # Reusable UI components
+│   ├── Container.tsx
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── Section.tsx
+│   ├── ProjectCard.tsx
+│   ├── ImageCarousel.tsx
+│   └── ThemeToggle.tsx
+├── sections/         # Page sections
+│   ├── Hero.tsx
+│   ├── Projects.tsx
+│   ├── About.tsx
+│   └── Contact.tsx
+├── data/
+│   └── projects.ts   # Project data
+├── styles/
+│   └── App.css       # Global styles and theme
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 20 or higher
+- npm
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/chandlerlee.me.git
+
+# Navigate to the project directory
+cd chandlerlee.me
+
+# Install dependencies
+npm install
 ```
+
+### Development
+
+```bash
+# Start the development server
+npm run dev
+```
+
+The site will be available at `http://localhost:5173`
+
+### Build
+
+```bash
+# Create a production build
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## Deployment
+
+The site automatically deploys to GitHub Pages via GitHub Actions when changes are pushed to the `main` branch.
+
+## Customization
+
+### Theme Colors
+
+Edit the CSS variables in `src/styles/App.css` to customize the color scheme:
+
+```css
+:root[data-theme="light"] {
+  --bg: #f9fafb;
+  --surface: #ffffff;
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #4b5563;
+  --accent: #06768d;
+}
+```
+
+### Projects
+
+Update the projects array in `src/data/projects.ts` to add or modify portfolio projects.
+
+### Content
+
+Edit the section components in `src/sections/` to update the Hero, About, and Contact sections.
+
+## License
+
+This project is open source and available under the MIT License.

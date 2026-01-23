@@ -14,13 +14,6 @@ export default function ImageCarousel({ images, altBase }: Props) {
     const openModal = () => setOpen(true);
     const closeModal = () => setOpen(false);
 
-    if (safeImages.length === 0) return null;
-
-    const prev = () =>
-        setIndex((i) => (i - 1 + safeImages.length) % safeImages.length);
-    const next = () =>
-        setIndex((i) => (i + 1) % safeImages.length);
-
     useEffect(() => {
         if (!open) return;
 
@@ -37,6 +30,13 @@ export default function ImageCarousel({ images, altBase }: Props) {
             window.removeEventListener("keydown", onKey);
         };
     }, [open]);
+
+    if (safeImages.length === 0) return null;
+
+    const prev = () =>
+        setIndex((i) => (i - 1 + safeImages.length) % safeImages.length);
+    const next = () =>
+        setIndex((i) => (i + 1) % safeImages.length);
 
     return (
         <div className="w-full">
