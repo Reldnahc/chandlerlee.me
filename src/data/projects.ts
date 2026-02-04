@@ -11,29 +11,39 @@ export const projects: Project[] = [
     {
         title: "AI Jeopardy",
         description:
-            "Online multiplayer Jeopardy-style game with a host role and realtime game state.",
-        tech: ["React", "TypeScript", "WebSockets", "Node.js", "Multiplayer"],
+            "A real-time, multiplayer Jeopardy-style game with a server-authoritative backend, live buzzing, and AI-powered content generation and evaluation.",
+        tech: [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "WebSockets",
+            "LLMs",
+            "Realtime Systems",
+        ],
         highlights: [
-            "Access to cutting edge LLMs from various providers.",
-            "Designed host vs contestant permissions and UI flows.",
-            "Built realtime buzzer + state sync over WebSockets.",
-            "Focused on low-latency UX and deterministic state updates.",
+            "Designed a server-authoritative multiplayer architecture with deterministic game state and zero client trust.",
+            "Implemented a low-latency buzzer system over WebSockets with race-condition handling and first-press resolution.",
+            "Built a host-versus-contestant permission model with enforced backend validation and distinct UI flows.",
+            "Implemented an automatic AI host capable of announcing categories, clues, and transitions in real time.",
+            "Integrated multiple LLM providers for speech-to-text and answer validation, with custom gating to prevent hallucinations.",
+            "Engineered a message-driven state machine to manage all game phases without polling or background loops.",
+            "Built asset storage and replay support with deduplication to avoid redundant uploads and enable fast playback.",
         ],
         links: [
             { label: "Live", href: "https://ai-jeopardy.com/" },
-            { label: "GitHub", href: "https://github.com/Reldnahc/AI-Jeopardy" },
+            { label: "GitHub", href: "https://github.com/Reldnahc/ai-jeopardy" },
         ],
-        images: ["/img/zenzaibatsu/1.png"],
     },
     {
         title: "Zen Zaibatsu",
         description:
-            "Online Idle incremental game with very large numbers.",
+            "An idle incremental game focused on extreme number scaling and mobile-first progression.",
         tech: ["React", "TypeScript", "Node.js"],
         highlights: [
-            "Client side local storage based gameplay.",
-            "Numbers scale to over 60 digits.",
-            "Mobile focused gameplay.",
+            "Designed a client-side, offline-first gameplay loop using local storage for persistence.",
+            "Implemented custom large-number handling to support values exceeding 60 digits without precision loss.",
+            "Built a mobile-first UI optimized for long play sessions and incremental interaction patterns.",
+            "Balanced progression curves and upgrades to maintain engagement at very large numeric scales.",
         ],
         links: [
             { label: "Live", href: "https://zenzaibatsu.com/" },
@@ -43,12 +53,14 @@ export const projects: Project[] = [
     {
         title: "3M Midoff",
         description:
-            "Platform fighting game created with platform fighter engine.",
-        tech: ["Gamemaker", "Online",  "Multiplayer"],
+            "A competitive platform fighting game built on a heavily modified platform fighter engine, with online multiplayer and rollback netcode.",
+        tech: ["GameMaker", "Online Multiplayer", "Rollback Netcode"],
         highlights: [
-            "over 15 playable characters.",
-            "Rollback Netcode.",
-            "Significant backend and engine changes.",
+            "Extensively modified the original platform fighter engine, including gameplay systems, character logic, and networking behavior.",
+            "Implemented and tuned rollback netcode, with additional custom changes to synchronization.",
+            "Designed and balanced over 15 unique playable characters, each with distinct move sets and mechanics.",
+            "Performed significant backend and engine-level refactors to support competitive online play and reduce desyncs.",
+            "Shipped a fully playable multiplayer build with real-world testing and iteration.",
         ],
         links: [
             { label: "Download", href: "https://drive.google.com/file/d/18wyG0x0Z22DcZTxe4tSvaIfs2YPSswzT/view?usp=sharing" },
