@@ -15,7 +15,7 @@ export default function Header() {
                     {/* Name */}
                     <a
                         href="#top"
-                        className="text-lg font-semibold tracking-tight text-text"
+                        className="text-xl text-accent font-semibold tracking-tight"
                     >
                         Chandler Lee
                     </a>
