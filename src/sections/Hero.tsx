@@ -6,7 +6,7 @@ export default function Hero() {
             <Container>
                 <div className="max-w-[750px]">
                     <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                        Building fast, reliable web applications.
+                        Frontend engineer building real-time web apps with AI that works
                     </h1>
 
                     <p className="mt-5 text-lg leading-relaxed opacity-80">

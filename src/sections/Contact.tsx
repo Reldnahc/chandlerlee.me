@@ -9,8 +9,8 @@ export default function Contact() {
                 </p>
 
                 <div className="mt-6 flex flex-col gap-3 text-sm font-medium">
-                    <a className="underline underline-offset-4 hover:text-accent" href="mailto:hi@chandler.me">
-                        hi@chandler.me
+                    <a className="underline underline-offset-4 hover:text-accent" href="mailto:hi@chandlerlee.me">
+                        hi@chandlerlee.me
                     </a>
                     <a className="underline underline-offset-4 hover:text-accent" href="https://github.com/Reldnahc">
                         GitHub

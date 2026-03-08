@@ -7,7 +7,7 @@ export default function Footer() {
                 <div>© {new Date().getFullYear()} Chandler Lee</div>
                 <div className="flex gap-4">
                     <a href="https://github.com/Reldnahc" className="hover:opacity-100 hover:text-accent hover:underline">GitHub</a>
-                    <a href="mailto:hi@chandler.me" className="hover:opacity-100 hover:text-accent hover:underline">Email</a>
+                    <a href="mailto:hi@chandlerlee.me" className="hover:opacity-100 hover:text-accent hover:underline">Email</a>
                 </div>
             </Container>
         </footer>
