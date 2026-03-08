@@ -1,14 +1,49 @@
-import {useEffect, useMemo, useState} from "react";
+import { useEffect, useMemo, useState } from "react";
+
+import type { MediaItem } from "../data/mediaTypes";
+
+type NormalizedMediaItem = {
+    type: "image" | "video";
+    src: string;
+    alt?: string;
+    poster?: string;
+};
 
 type Props = {
-    images: string[];
+    media: MediaItem[];
     altBase: string;
 };
 
-export default function ImageCarousel({ images, altBase }: Props) {
-    const safeImages = useMemo(() => images.filter(Boolean), [images]);
-    const [index, setIndex] = useState(0);
+function inferMediaType(src: string): "image" | "video" {
+    const cleanSrc = src.split("?")[0].toLowerCase();
+    return /\.(mp4|webm|ogg|mov|m4v)$/.test(cleanSrc) ? "video" : "image";
+}
 
+function normalizeMedia(item: MediaItem): NormalizedMediaItem | null {
+    if (typeof item === "string") {
+        if (!item.trim()) return null;
+        return {
+            type: inferMediaType(item),
+            src: item,
+        };
+    }
+
+    if (!item?.src?.trim()) return null;
+
+    return {
+        type: item.type ?? inferMediaType(item.src),
+        src: item.src,
+        alt: item.alt,
+        poster: item.poster,
+    };
+}
+
+export default function ImageCarousel({ media, altBase }: Props) {
+    const safeMedia = useMemo(
+        () => media.map(normalizeMedia).filter(Boolean) as NormalizedMediaItem[],
+        [media],
+    );
+    const [index, setIndex] = useState(0);
     const [open, setOpen] = useState(false);
 
     const openModal = () => setOpen(true);
@@ -31,30 +66,52 @@ export default function ImageCarousel({ images, altBase }: Props) {
         };
     }, [open]);
 
-    if (safeImages.length === 0) return null;
+    if (safeMedia.length === 0) return null;
+
+    const current = safeMedia[index];
 
     const prev = () =>
-        setIndex((i) => (i - 1 + safeImages.length) % safeImages.length);
-    const next = () =>
-        setIndex((i) => (i + 1) % safeImages.length);
+        setIndex((i) => (i - 1 + safeMedia.length) % safeMedia.length);
+    const next = () => setIndex((i) => (i + 1) % safeMedia.length);
+
+    const defaultAlt = `${altBase} media ${index + 1}`;
+    const currentAlt = current.alt ?? defaultAlt;
 
     return (
         <div className="w-full">
             <div className="relative aspect-[16/10] overflow-hidden rounded-md border border-border bg-bg">
-                <img
-                    src={safeImages[index]}
-                    alt={`${altBase} screenshot ${index + 1}`}
-                    className="h-full w-full object-cover cursor-zoom-in"
-                    loading="lazy"
-                    draggable={false}
-                    onClick={openModal}
-                />
+                {current.type === "image" ? (
+                    <img
+                        src={current.src}
+                        alt={currentAlt}
+                        className="h-full w-full object-cover cursor-zoom-in"
+                        loading="lazy"
+                        draggable={false}
+                        onClick={openModal}
+                    />
+                ) : (
+                    <video
+                        src={current.src}
+                        poster={current.poster}
+                        className="h-full w-full object-cover cursor-zoom-in"
+                        preload="metadata"
+                        muted
+                        playsInline
+                        onClick={openModal}
+                    />
+                )}
 
-                {safeImages.length > 1 && (
+                {current.type === "video" && (
+                    <span className="pointer-events-none absolute left-2 top-2 rounded-md border border-border bg-black/70 px-2 py-1 text-[10px] font-semibold tracking-wide text-white">
+                        VIDEO
+                    </span>
+                )}
+
+                {safeMedia.length > 1 && (
                     <>
                         <button
                             type="button"
-                            aria-label="Previous image"
+                            aria-label="Previous media"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 prev();
@@ -66,7 +123,7 @@ export default function ImageCarousel({ images, altBase }: Props) {
 
                         <button
                             type="button"
-                            aria-label="Next image"
+                            aria-label="Next media"
                             onClick={(e) => {
                                 e.stopPropagation();
                                 next();
@@ -79,13 +136,13 @@ export default function ImageCarousel({ images, altBase }: Props) {
                 )}
             </div>
 
-            {safeImages.length > 1 && (
+            {safeMedia.length > 1 && (
                 <div className="mt-2 flex justify-center gap-1">
-                    {safeImages.map((_, i) => (
+                    {safeMedia.map((_, i) => (
                         <button
                             key={i}
                             type="button"
-                            aria-label={`Go to image ${i + 1}`}
+                            aria-label={`Go to media ${i + 1}`}
                             onClick={() => setIndex(i)}
                             className={[
                                 "h-1.5 w-6 rounded-full border border-border transition",
@@ -102,33 +159,50 @@ export default function ImageCarousel({ images, altBase }: Props) {
                     onClick={closeModal}
                     role="dialog"
                     aria-modal="true"
-                    aria-label={`${altBase} image viewer`}
+                    aria-label={`${altBase} media viewer`}
                 >
                     <div
                         className="relative max-h-[90vh] max-w-[90vw]"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <img
-                            src={safeImages[index]}
-                            alt={`${altBase} full view ${index + 1}`}
-                            className="max-h-[90vh] max-w-[90vw] rounded-md"
-                            draggable={false}
-                        />
+                        {current.type === "image" ? (
+                            <img
+                                src={current.src}
+                                alt={currentAlt}
+                                className="max-h-[90vh] max-w-[90vw] rounded-md"
+                                draggable={false}
+                            />
+                        ) : (
+                            <video
+                                src={current.src}
+                                poster={current.poster}
+                                className="max-h-[90vh] max-w-[90vw] rounded-md"
+                                controls
+                                autoPlay
+                                playsInline
+                            />
+                        )}
+
+                        {current.type === "video" && (
+                            <span className="pointer-events-none absolute left-2 top-2 rounded-md border border-border bg-black/70 px-2 py-1 text-[10px] font-semibold tracking-wide text-white">
+                                VIDEO
+                            </span>
+                        )}
 
                         <button
                             type="button"
-                            aria-label="Close image"
+                            aria-label="Close media"
                             onClick={closeModal}
                             className="absolute -top-3 -right-3 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-surface text-text shadow-sm transition hover:bg-bg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                         >
-                            ✕
+                            X
                         </button>
 
-                        {safeImages.length > 1 && (
+                        {safeMedia.length > 1 && (
                             <>
                                 <button
                                     type="button"
-                                    aria-label="Previous image"
+                                    aria-label="Previous media"
                                     onClick={prev}
                                     className="absolute left-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface/70 text-text backdrop-blur transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                                 >
@@ -137,7 +211,7 @@ export default function ImageCarousel({ images, altBase }: Props) {
 
                                 <button
                                     type="button"
-                                    aria-label="Next image"
+                                    aria-label="Next media"
                                     onClick={next}
                                     className="absolute right-2 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface/70 text-text backdrop-blur transition hover:bg-surface focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
                                 >
@@ -150,9 +224,7 @@ export default function ImageCarousel({ images, altBase }: Props) {
             )}
         </div>
     );
-
 }
-
 
 function ChevronLeft() {
     return (
@@ -189,3 +261,4 @@ function ChevronRight() {
         </svg>
     );
 }
+

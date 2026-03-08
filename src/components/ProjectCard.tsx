@@ -4,6 +4,8 @@ import ImageCarousel from "./ImageCarousel";
 type Props = { project: Project };
 
 export default function ProjectCard({ project }: Props) {
+    const media = project.media?.length ? project.media : project.images;
+
     return (
         <article className="rounded-lg border border-accent p-6 space-y-6">
             {/* Header / Overview */}
@@ -24,19 +26,16 @@ export default function ProjectCard({ project }: Props) {
             </div>
 
             {/* Body: Highlights + Media */}
-            <div className="grid gap-6 lg:grid-cols-[1fr_360px]">
+            <div className="grid items-start gap-6 lg:grid-cols-[1fr_360px]">
                 <ul className="list-disc space-y-2 pl-5 opacity-85">
                     {project.highlights.map((h) => (
                         <li key={h}>{h}</li>
                     ))}
                 </ul>
 
-                {project.images && project.images.length > 0 && (
-                    <div className="rounded-lg border border-accent p-3">
-                        <ImageCarousel
-                            images={project.images}
-                            altBase={project.title}
-                        />
+                {media && media.length > 0 && (
+                    <div className="self-start rounded-lg border border-accent p-3">
+                        <ImageCarousel media={media} altBase={project.title} />
                     </div>
                 )}
             </div>
