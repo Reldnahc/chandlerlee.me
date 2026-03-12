@@ -1,3 +1,5 @@
+import type { MediaItem } from "./mediaTypes";
+
 export type Project = {
     title: string;
     description: string;
@@ -5,6 +7,7 @@ export type Project = {
     highlights: string[];
     links: { label: string; href: string }[];
     images?: string[];
+    media?: MediaItem[];
 };
 
 export const projects: Project[] = [
@@ -33,6 +36,14 @@ export const projects: Project[] = [
             { label: "Live", href: "https://ai-jeopardy.com/" },
             { label: "GitHub", href: "https://github.com/Reldnahc/ai-jeopardy" },
         ],
+        media: [
+            {
+                type: "video",
+                src: "/vid/test.mp4",
+                poster: "/vid/demo-poster.png"
+            },
+            "/img/midoff/1.png",
+        ]
     },
     {
         title: "Zen Zaibatsu",
@@ -45,9 +56,7 @@ export const projects: Project[] = [
             "Built a mobile-first UI optimized for long play sessions and incremental interaction patterns.",
             "Balanced progression curves and upgrades to maintain engagement at very large numeric scales.",
         ],
-        links: [
-            { label: "Live", href: "https://zenzaibatsu.com/" },
-        ],
+        links: [{ label: "Live", href: "https://zenzaibatsu.com/" }],
         images: ["/img/zenzaibatsu/1.png", "/img/zenzaibatsu/2.png"],
     },
     {
@@ -63,8 +72,12 @@ export const projects: Project[] = [
             "Shipped a fully playable multiplayer build with real-world testing and iteration.",
         ],
         links: [
-            { label: "Download", href: "https://drive.google.com/file/d/18wyG0x0Z22DcZTxe4tSvaIfs2YPSswzT/view?usp=sharing" },
+            {
+                label: "Download",
+                href: "https://drive.google.com/file/d/18wyG0x0Z22DcZTxe4tSvaIfs2YPSswzT/view?usp=sharing",
+            },
         ],
         images: ["/img/midoff/1.png"],
     },
 ];
+
