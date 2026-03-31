@@ -36,14 +36,6 @@ export const projects: Project[] = [
             { label: "Live", href: "https://ai-jeopardy.com/" },
             { label: "GitHub", href: "https://github.com/Reldnahc/ai-jeopardy" },
         ],
-        media: [
-            {
-                type: "video",
-                src: "/vid/test.mp4",
-                poster: "/vid/demo-poster.png"
-            },
-            "/img/midoff/1.png",
-        ]
     },
     {
         title: "Zen Zaibatsu",
@@ -80,4 +72,3 @@ export const projects: Project[] = [
         images: ["/img/midoff/1.png"],
     },
 ];
-
